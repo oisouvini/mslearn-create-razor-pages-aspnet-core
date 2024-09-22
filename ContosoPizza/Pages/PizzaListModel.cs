@@ -12,6 +12,13 @@ namespace ContosoPizza.Pages
 
         [BindProperty]
         public Pizza NewPizza { get; set; } = default!;
+
+
+        public PizzaListModel(PizzaService service)
+        {
+            _service = service;
+        }
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid || NewPizza == null)
@@ -23,9 +30,12 @@ namespace ContosoPizza.Pages
 
             return RedirectToAction("Get");
         }
-        public PizzaListModel(PizzaService service)
+
+        public IActionResult OnPostDelete(int id)
         {
-            _service = service;
+            _service.DeletePizza(id);
+
+            return RedirectToAction("Get");
         }
         public void OnGet()
         {
