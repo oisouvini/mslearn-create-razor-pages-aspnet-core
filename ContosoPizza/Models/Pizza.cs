@@ -8,6 +8,7 @@ public class Pizza
 
     [Required]
     public string? Name { get; set; }
+    public string? Image { get; set; }
     public PizzaSize Size { get; set; }
     public bool IsGlutenFree { get; set; }
 
